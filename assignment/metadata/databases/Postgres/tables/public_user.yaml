@@ -1,0 +1,11 @@
+table:
+  name: user
+  schema: public
+array_relationships:
+  - name: user_tracking
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: user_tracking
+          schema: public

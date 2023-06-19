@@ -1,0 +1,25 @@
+table:
+  name: user
+  schema: public
+array_relationships:
+  - name: user_tracking
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: user_tracking
+          schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - first_name
+        - gender
+        - last_name
+        - created_at
+        - updated_at
+        - id
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      allow_aggregations: true
